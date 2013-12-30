@@ -1,0 +1,46 @@
+CMAKE_MINIMUM_REQUIRED( VERSION 2.6 )
+
+PROJECT(txt2bas)
+
+SET(CMAKE_INSTALL_PREFIX ${CMAKE_HOME_DIRECTORY})
+SET(BINARY_DIR bin)
+SET(SOURCE_DIR src)
+SET(TEST_DIR test)
+
+SET(TXT2BAS_SOURCE_LIST
+    ${SOURCE_DIR}/txt2bas.c
+)
+ADD_EXECUTABLE(txt2bas ${TXT2BAS_SOURCE_LIST})
+
+SET(BAS2TXT_SOURCE_LIST
+    ${SOURCE_DIR}/bas2txt.c
+)
+ADD_EXECUTABLE(bas2txt ${BAS2TXT_SOURCE_LIST})
+
+SET(TAP2DSK_SOURCE_LIST
+    ${SOURCE_DIR}/tap2dsk.c
+    ${SOURCE_DIR}/sedoric3.c
+)
+ADD_EXECUTABLE(tap2dsk ${TAP2DSK_SOURCE_LIST})
+
+SET(OLD2MFM_SOURCE_LIST
+    ${SOURCE_DIR}/old2mfm.c
+)
+ADD_EXECUTABLE(old2mfm ${OLD2MFM_SOURCE_LIST})
+
+#ADD_CUSTOM_COMMAND(
+#	OUTPUT chars.tap
+#	COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_DIR}/chars.bas chars.bas
+#	COMMAND ${BINARY_DIR}/txt2bas chars.bas chars.tap
+#	DEPENDS ${TEST_DIR}/chars.bas
+#	COMMENT "convert chars")	
+#ADD_CUSTOM_TARGET (chars.tap ALL DEPENDS ${TEST_DIR}/chars.bas)
+
+# installing
+INSTALL(TARGETS 
+    txt2bas
+    bas2txt
+    tap2dsk
+    old2mfm
+    DESTINATION ${BINARY_DIR})
+
