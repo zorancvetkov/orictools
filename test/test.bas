@@ -1,6 +1,6 @@
 10 GOSUB 9000
 20 GOSUB 100
-30 LV = 2: GOSUB 1000
+30 LV = 1: GOSUB 1000
 40 PRINT @0, 21; "# $ % & ' ( )"
 90 WAIT 500: END
 100 REM ===== LOAD CHARACTERS ============
@@ -30,7 +30,6 @@
 1060 LE = LEN(L$)
 1070 FOR P = 1 TO LE
 1080 C$ = MID$(L$,P,1)
-1075 REM PRINT C$, P
 1090 IF C$ = "N" THEN X = SX: Y = Y + 1: W% = 1: GOTO 1190
 1100 IF C$ = "X" THEN PRINT @X,Y;"%": X = X + 1: W% = 0: GOTO 1190
 1110 IF C$ = "P" THEN PRINT @X,Y;"$": X = X + 1: W% = 0: GOTO 1190
