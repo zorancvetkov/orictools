@@ -13,6 +13,8 @@ cp ../test/test.bas .
 #cp amazea.dsk amazea_mfm.dsk
 #./old2mfm amazea_mfm.dsk
 
+./txt2lvl ../test/AlbertoG1-1.txt levels.txt
+
 cp test.dsk test_mfm.dsk
 ./old2mfm test_mfm.dsk
 cp *_mfm.dsk ../../oriculator-read-only/disks
@@ -22,5 +24,5 @@ cp *_mfm.dsk ../../oriculator-read-only/disks
 #./hxcfe -conv:HXC_HFE -uselayout:ORIC_DISK -finput:krys.dsk -foutput:krys2.hfe
 
 cd ../../oriculator-read-only
-./oricutron -d disks/test_mfm.dsk 
+#./oricutron -d disks/test_mfm.dsk 
 

@@ -28,6 +28,11 @@ SET(OLD2MFM_SOURCE_LIST
 )
 ADD_EXECUTABLE(old2mfm ${OLD2MFM_SOURCE_LIST})
 
+SET(TXT2LVL_SOURCE_LIST
+    ${SOURCE_DIR}/txt2lvl.cpp
+)
+ADD_EXECUTABLE(txt2lvl ${TXT2LVL_SOURCE_LIST})
+
 #ADD_CUSTOM_COMMAND(
 #	OUTPUT chars.tap
 #	COMMAND ${CMAKE_COMMAND} -E copy ${SOURCE_DIR}/chars.bas chars.bas
@@ -42,5 +47,6 @@ INSTALL(TARGETS
     bas2txt
     tap2dsk
     old2mfm
+    txt2lvl
     DESTINATION ${BINARY_DIR})
 
