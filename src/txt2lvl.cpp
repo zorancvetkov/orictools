@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -55,6 +57,7 @@ void Level::add(char *line)
 	}
 }
 
+const int DIV = 85;
 int main(int argc, char *argv[])
 {
 	if(argc != 3)
@@ -67,11 +70,12 @@ int main(int argc, char *argv[])
 	ofstream out(argv[2]);
 	Level lvl;
 	int basLine = 2000;
+	int i;
 	while(in)
 	{
 		char line[200];
 		in.getline(line, sizeof(line)-1);
-		if(line[0] == ';')
+		if(line[0] == ';' || strlen(line) < 3)
 		{
 			if(lvl.height > 0)
 			{
@@ -80,8 +84,25 @@ int main(int argc, char *argv[])
 				out << basLine << " DATA ";
 				out << (40 - lvl.width) / 2 << ", ";
 				out << 2 + (22 - lvl.height) / 2 << ", ";
-				out << "1, ";
-				out << "\"" << lvl.commands << "\"" << endl;
+				int len = strlen(lvl.commands.c_str());
+				out << (len + DIV - 1) / DIV  << ", ";
+				vector<string> coms;
+				coms.clear();
+				for(i = 0; i < len; i += DIV)
+				{
+					char s[DIV + 1];
+					if(i + DIV < len) 
+						strncpy(s, lvl.commands.c_str() + i, DIV);
+					else strcpy(s, lvl.commands.c_str() + i);
+					s[DIV] = 0;
+					string s2 = s;
+					coms.push_back(s2);
+				}
+				out << "\"" << coms[0] << "\"" << endl;
+				for(i = 1; i < coms.size(); i++)
+				{
+					out << basLine << " DATA          \"" << coms[i] << "\"" << endl;
+				}
 			}
 			lvl = Level();
 			continue;

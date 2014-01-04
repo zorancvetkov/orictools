@@ -24,5 +24,5 @@ cp *_mfm.dsk ../../oriculator-read-only/disks
 #./hxcfe -conv:HXC_HFE -uselayout:ORIC_DISK -finput:krys.dsk -foutput:krys2.hfe
 
 cd ../../oriculator-read-only
-#./oricutron -d disks/test_mfm.dsk 
+./oricutron -d disks/test_mfm.dsk 
 
