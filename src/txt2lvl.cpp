@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -17,7 +16,7 @@ struct Level {
 void Level::add(char *line)
 {
 	char *p = line, *p2, ch, c;
-	
+
 	height++;
 	if(width < strlen(line))
 		width = strlen(line);
@@ -65,7 +64,7 @@ int main(int argc, char *argv[])
 		cout << "Usage: " << argv[0] << " txtInput lvlOutput" << endl;
 		return -1;
 	}
-	
+
 	ifstream in(argv[1]);
 	ofstream out(argv[2]);
 	Level lvl;
@@ -83,7 +82,7 @@ int main(int argc, char *argv[])
 				basLine += 10;
 				out << basLine << " DATA ";
 				out << (40 - lvl.width) / 2 << ", ";
-				out << 2 + (22 - lvl.height) / 2 << ", ";
+				out << 3 + (22 - lvl.height) / 2 << ", ";
 				int len = strlen(lvl.commands.c_str());
 				out << (len + DIV - 1) / DIV  << ", ";
 				vector<string> coms;
@@ -91,7 +90,7 @@ int main(int argc, char *argv[])
 				for(i = 0; i < len; i += DIV)
 				{
 					char s[DIV + 1];
-					if(i + DIV < len) 
+					if(i + DIV < len)
 						strncpy(s, lvl.commands.c_str() + i, DIV);
 					else strcpy(s, lvl.commands.c_str() + i);
 					s[DIV] = 0;
@@ -109,7 +108,6 @@ int main(int argc, char *argv[])
 		}
 		lvl.add(line);
 	}
-	
+
 	return 0;
 }
-
