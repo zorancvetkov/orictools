@@ -18,11 +18,12 @@ cp ../test/test.bas .
 cp test.dsk test_mfm.dsk
 ./old2mfm test_mfm.dsk
 cp *_mfm.dsk ../../oriculator-read-only/disks
+cp test.tap ../../oriculator-read-only/tapes
 
 #./hxcfe -conv:HXC_HFE -finput:amazea.dsk -foutput:amazea2.hfe
 #./hxcfe -ifmode:EMU_SHUGART_FLOPPYMODE -conv:HXC_HFE -uselayout:DOS_DD_720KB -finput:krys.dsk -foutput:krys2.hfe
 #./hxcfe -conv:HXC_HFE -uselayout:ORIC_DISK -finput:krys.dsk -foutput:krys2.hfe
 
 cd ../../oriculator-read-only
-./oricutron -d disks/test_mfm.dsk 
-
+#./oricutron -d disks/test_mfm.dsk 
+./oricutron -t tapes/test.tap
