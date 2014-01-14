@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	ifstream in(argv[1]);
 	ofstream out(argv[2]);
 	Level lvl;
-	int basLine = 2000;
+	int basLine = 50000;
 	int i;
 	while(in)
 	{
@@ -108,6 +108,8 @@ int main(int argc, char *argv[])
 		}
 		lvl.add(line);
 	}
+	basLine += 10;
+	out << basLine << " REM === EOF ===";
 
 	return 0;
 }

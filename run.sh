@@ -2,28 +2,21 @@
 
 make
 cd bin
-cp ../test/test.bas .
-./txt2bas test.bas test.tap
-./tap2dsk test.tap test.dsk
-
-#./tap2dsk Amazea.tap amazea.dsk
-#./bas2txt Amazea.tap > amazea.bas
-#./txt2bas amazea.bas amazea.tap
-#./tap2dsk amazea.tap amazea2.dsk
-#cp amazea.dsk amazea_mfm.dsk
-#./old2mfm amazea_mfm.dsk
 
 ./txt2lvl ../test/AlbertoG1-1.txt levels.txt
+cat ../test/bager.bas levels.txt > bager.bas
+./txt2bas bager.bas bager.tap
+./tap2dsk bager.tap bager.dsk
 
-cp test.dsk test_mfm.dsk
-./old2mfm test_mfm.dsk
+cp bager.dsk bager_mfm.dsk
+./old2mfm bager_mfm.dsk
 cp *_mfm.dsk ../../oriculator-read-only/disks
-cp test.tap ../../oriculator-read-only/tapes
+cp bager.tap ../../oriculator-read-only/tapes
 
 #./hxcfe -conv:HXC_HFE -finput:amazea.dsk -foutput:amazea2.hfe
 #./hxcfe -ifmode:EMU_SHUGART_FLOPPYMODE -conv:HXC_HFE -uselayout:DOS_DD_720KB -finput:krys.dsk -foutput:krys2.hfe
 #./hxcfe -conv:HXC_HFE -uselayout:ORIC_DISK -finput:krys.dsk -foutput:krys2.hfe
 
 cd ../../oriculator-read-only
-#./oricutron -d disks/test_mfm.dsk 
-./oricutron -t tapes/test.tap
+#./oricutron -d disks/bager_mfm.dsk 
+./oricutron -t tapes/bager.tap
