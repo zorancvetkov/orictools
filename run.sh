@@ -17,6 +17,11 @@ cp bager.tap ../../oriculator-read-only/tapes
 #./hxcfe -ifmode:EMU_SHUGART_FLOPPYMODE -conv:HXC_HFE -uselayout:DOS_DD_720KB -finput:krys.dsk -foutput:krys2.hfe
 #./hxcfe -conv:HXC_HFE -uselayout:ORIC_DISK -finput:krys.dsk -foutput:krys2.hfe
 
+./txt2bas ../test/test.bas test.tap
+cp test.tap ../../oriculator-read-only/tapes
+
 cd ../../oriculator-read-only
 #./oricutron -d disks/bager_mfm.dsk 
-./oricutron -t tapes/bager.tap
+#./oricutron -t tapes/bager.tap
+
+./oricutron -t tapes/test.tap
