@@ -22,6 +22,6 @@ cp test.tap ../../oriculator-read-only/tapes
 
 cd ../../oriculator-read-only
 #./oricutron -d disks/bager_mfm.dsk 
-#./oricutron -t tapes/bager.tap
+./oricutron -t tapes/bager.tap
 
-./oricutron -t tapes/test.tap
+#./oricutron -t tapes/test.tap
